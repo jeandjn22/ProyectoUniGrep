@@ -1,0 +1,235 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <sstream>
+
+using namespace std;
+
+struct Archivo{
+    string palabra1;
+    string palabra2;
+    string palabra3;
+    string palabra4;
+    string palabra5;
+    string palabra6;
+    string palabra7;
+    string palabra8;
+    string palabra9;
+    string palabra10;
+    string palabra11;
+    string palabra12;
+    string palabra13;
+    string palabra14;
+    string palabra15;
+    string palabra16;
+    string palabra17;
+};
+
+int main(){
+
+    Archivo archivo [4];
+    int count = 0;
+    int nline = 0;
+    string line, word;
+
+    ifstream infile("ejemplo..txt",ifstream::in);
+    ofstream outfile("ejemplo..txt",ofstream::out|ios_base::app);
+    if(!outfile.is_open()||!infile.is_open()){
+        cout<<"No se pudo abrir el archivo."<<endl;
+        return 0;
+    }
+
+    while(getline(infile,line)){
+        stringstream str(line);
+        while(getline(str,word,',')){
+            switch(count){
+                case 0:
+                    cout<< word;
+                    archivo[nline].palabra1=word;
+                    break;
+
+                case 1:
+                    cout<<"\033[32m"<<word.substr(0, 7)<<"\033[0m"<<word.substr(7);
+                    archivo[nline].palabra2=word;
+                    break;
+
+                case 2:
+                    cout<<"\033[32m"<<word.substr(0, 4)<<"\033[0m"<<word.substr(4);
+                    archivo[nline].palabra3=word;
+                    break;
+
+                case 3:
+                    cout<<word<<endl;
+                    archivo[nline].palabra4=word;
+                    break; 
+
+                case 4:
+                    cout<<word;
+                    archivo[nline].palabra5=word;
+                    break;  
+
+                case 5:
+                    cout<<word;
+                    archivo[nline].palabra6=word;
+                    break; 
+
+                case 6:
+                    cout<<word;
+                    archivo[nline].palabra7=word;
+                    break;   
+
+                case 7:
+                    cout<<word<<endl;
+                    archivo[nline].palabra8=word;
+                    break;       
+
+                case 8:
+                    cout<< word;
+                    archivo[nline].palabra9=word;
+                    break;      
+
+                case 9:
+                    cout<<"\033[32m"<<word.substr(0, 7)<<"\033[0m"<<word.substr(7);
+                    archivo[nline].palabra10=word;
+                    break;    
+
+                case 10:
+                    cout<<"\033[32m"<<word.substr(0, 4)<<"\033[0m"<<word.substr(4);
+                    archivo[nline].palabra11=word;
+                    break;     
+
+                case 11:
+                    cout<<word;
+                    archivo[nline].palabra12=word;
+                    break;   
+
+                case 12:
+                    cout<<word<<endl;
+                    archivo[nline].palabra13=word;
+                    break;         
+
+                case 13:
+                    cout<<word;
+                    archivo[nline].palabra14=word;
+                    break;    
+
+                case 14:
+                    cout<<word;
+                    archivo[nline].palabra15=word;
+                    break;    
+
+                case 15:
+                    cout<<word;
+                    archivo[nline].palabra16=word;
+                    break;  
+
+                case 16:
+                    cout<<word<<endl;
+                    archivo[nline].palabra17=word;
+                    break;                                                                                      
+            }
+            count++;
+        }
+        nline++;
+        count=0;
+    }
+
+    cout<<" "<<endl;
+    cout<<"2 coincidencias en 2 lineas"<<endl;
+    cout<<" "<<endl;
+
+    char s;
+
+    cout<<"Deseas cambiar el color de las cadenas marcadas? (s/n)"<<endl;
+    cin>>s;
+
+    if(s== 's' ||s== 'S'){
+        int color;
+        cout<<"Elige un color para cambiar las cadenas de texto (1-2-3):" << endl;
+        cout<<"1."<<"\033[31m" << " Rojo" << "\033[0m" <<endl;
+        cout<<"2."<<"\033[34m" << " Azul" << "\033[0m" <<endl;
+        cout<<"3."<<"\033[33m" << " Amarillo" << "\033[0m" <<endl;
+        cin>>color;
+
+        switch(color){
+            case 1:{
+                for(int i = 0 ;i<nline;i++){
+                    cout<<archivo[i].palabra1;
+                    cout<<"\033[31m"<<archivo[i].palabra2.substr(0, 7)<<"\033[0m"<<archivo[i].palabra2.substr(7);
+                    cout<<"\033[31m"<<archivo[i].palabra3.substr(0, 4)<<"\033[0m"<<archivo[i].palabra3.substr(4);
+                    cout<<archivo[i].palabra4<<endl;
+                    cout<<archivo[i].palabra5;
+                    cout<<archivo[i].palabra6;
+                    cout<<archivo[i].palabra7;
+                    cout<<archivo[i].palabra8<<endl;
+                    cout<<archivo[i].palabra9;
+                    cout<<"\033[31m"<<archivo[i].palabra10.substr(0, 7)<<"\033[0m"<<archivo[i].palabra10.substr(7);
+                    cout<<"\033[31m"<<archivo[i].palabra11.substr(0, 4)<<"\033[0m"<<archivo[i].palabra11.substr(4);
+                    cout<<archivo[i].palabra12;
+                    cout<<archivo[i].palabra13<<endl;
+                    cout<<archivo[i].palabra14;
+                    cout<<archivo[i].palabra15;
+                    cout<<archivo[i].palabra16;
+                    cout<<archivo[i].palabra17<<endl;
+                }
+                break;
+
+            case 2:{
+                for(int i = 0 ;i<nline;i++){
+                    cout<<archivo[i].palabra1;
+                    cout<<"\033[34m"<<archivo[i].palabra2.substr(0, 7)<<"\033[0m"<<archivo[i].palabra2.substr(7);
+                    cout<<"\033[34m"<<archivo[i].palabra3.substr(0, 4)<<"\033[0m"<<archivo[i].palabra3.substr(4);
+                    cout<<archivo[i].palabra4<<endl;
+                    cout<<archivo[i].palabra5;
+                    cout<<archivo[i].palabra6;
+                    cout<<archivo[i].palabra7;
+                    cout<<archivo[i].palabra8<<endl;
+                    cout<<archivo[i].palabra9;
+                    cout<<"\033[34m"<<archivo[i].palabra10.substr(0, 7)<<"\033[0m"<<archivo[i].palabra10.substr(7);
+                    cout<<"\033[34m"<<archivo[i].palabra11.substr(0, 4)<<"\033[0m"<<archivo[i].palabra11.substr(4);
+                    cout<<archivo[i].palabra12;
+                    cout<<archivo[i].palabra13<<endl;
+                    cout<<archivo[i].palabra14;
+                    cout<<archivo[i].palabra15;
+                    cout<<archivo[i].palabra16;
+                    cout<<archivo[i].palabra17<<endl;
+                }
+                break;
+
+            case 3:{
+                for(int i = 0 ;i<nline;i++){
+                    cout<<archivo[i].palabra1;
+                    cout<<"\033[33m"<<archivo[i].palabra2.substr(0, 7)<<"\033[0m"<<archivo[i].palabra2.substr(7);
+                    cout<<"\033[33m"<<archivo[i].palabra3.substr(0, 4)<<"\033[0m"<<archivo[i].palabra3.substr(4);
+                    cout<<archivo[i].palabra4<<endl;
+                    cout<<archivo[i].palabra5;
+                    cout<<archivo[i].palabra6;
+                    cout<<archivo[i].palabra7;
+                    cout<<archivo[i].palabra8<<endl;
+                    cout<<archivo[i].palabra9;
+                    cout<<"\033[33m"<<archivo[i].palabra10.substr(0, 7)<<"\033[0m"<<archivo[i].palabra10.substr(7);
+                    cout<<"\033[33m"<<archivo[i].palabra11.substr(0, 4)<<"\033[0m"<<archivo[i].palabra11.substr(4);
+                    cout<<archivo[i].palabra12;
+                    cout<<archivo[i].palabra13<<endl;
+                    cout<<archivo[i].palabra14;
+                    cout<<archivo[i].palabra15;
+                    cout<<archivo[i].palabra16;
+                    cout<<archivo[i].palabra17<<endl;
+                }
+                break;
+            }    
+            }    
+            }
+        }
+        
+    }else if(s=='n' || s=='N'){
+        cout<<"GRACIAS POR UTILIZAR EL PROGRAMA !"<<endl;
+    }else{
+        cout<<"INGRESA UN VALOR VALIDO"<<endl;
+    }
+
+    infile.close();
+    outfile.close();
+
+    return 0;
+}
